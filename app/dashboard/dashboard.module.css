@@ -3,6 +3,7 @@
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
+  background: var(--background);
 }
 
 .header {
@@ -11,7 +12,7 @@
   align-items: center;
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
   gap: 20px;
 }
@@ -20,7 +21,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
+  color: var(--text);
 }
 
 .actions {
@@ -29,8 +30,8 @@
 
 .actions button {
   padding: 12px 24px;
-  background-color: #0070f3;
-  color: white;
+  background: var(--primary);
+  color: var(--white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -39,7 +40,7 @@
 }
 
 .actions button:hover {
-  background-color: #0051b3;
+  background: var(--primary-dark);
 }
 
 .grid {
@@ -51,15 +52,20 @@
 
 .quizCard {
   padding: 20px;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: white;
+  background: var(--background);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .quizCard:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quizCard h3 {
+  color: var(--white);
+  margin-bottom: 10px;
 }
 
 .quizActions {
@@ -72,12 +78,13 @@
 .quizActions button {
   flex: 1;
   min-width: 120px;
-  padding: 8px 16px;
-  background-color: #0070f3;
-  color: white;
+  padding: 12px 24px;
+  background: var(--primary);
+  color: var(--white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
   transition: background-color 0.2s;
 }
 
@@ -101,6 +108,11 @@
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .actions button,
+  .quizActions button {
+    width: 100%;
   }
 }
 

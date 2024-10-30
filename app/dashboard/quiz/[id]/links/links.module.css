@@ -3,32 +3,36 @@
   max-width: 1000px;
   margin: 0 auto;
   min-height: 100vh;
+  background: var(--background);
 }
 
 .createLink {
   display: flex;
   gap: 15px;
   margin: 30px 0;
-  background: white;
+  background: var(--white);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
+  border: 1px solid var(--border);
 }
 
 .createLink input {
   flex: 1;
   min-width: 200px;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 4px;
   font-size: 16px;
+  color: var(--text);
+  background: var(--white);
 }
 
 .createLink button {
   padding: 12px 24px;
-  background: #0070f3;
-  color: white;
+  background: var(--primary);
+  color: var(--white);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -38,7 +42,7 @@
 }
 
 .createLink button:hover {
-  background: #0051b3;
+  background: var(--primary-dark);
 }
 
 .linksList {
@@ -46,7 +50,7 @@
 }
 
 .linkCard {
-  background: white;
+  background: var(--white);
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -57,6 +61,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
   flex-wrap: wrap;
+  border: 1px solid var(--border);
 }
 
 .linkCard:hover {
@@ -71,18 +76,18 @@
 
 .linkInfo h3 {
   margin: 0 0 10px 0;
-  color: #333;
+  color: var(--primary-dark);
 }
 
 .linkInfo p {
   margin: 5px 0;
-  color: #666;
+  color: var(--gray-600);
 }
 
 .linkCard button {
   padding: 10px 20px;
-  background: #2e7d32;
-  color: white;
+  background: var(--primary);
+  color: var(--white);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -90,7 +95,7 @@
 }
 
 .linkCard button:hover {
-  background: #1b5e20;
+  background: var(--primary-dark);
 }
 
 @media (max-width: 768px) {
