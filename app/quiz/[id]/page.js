@@ -12,6 +12,8 @@ export default function TakeQuiz() {
   const [answers, setAnswers] = useState({});
   const [timeLeft, setTimeLeft] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showContext, setShowContext] = useState(false);
+  const [currentContext, setCurrentContext] = useState('');
 
   useEffect(() => {
     fetchQuiz();
@@ -46,6 +48,8 @@ export default function TakeQuiz() {
         throw new Error('Quiz not found or already completed');
       }
       const data = await response.json();
+      console.log('Fetched quiz data:', data);
+      console.log('Question contexts:', data.questions.map(q => q.question_context));
       setQuiz(data);
     } catch (error) {
       console.error('Error fetching quiz:', error);
@@ -54,10 +58,20 @@ export default function TakeQuiz() {
   };
 
   const handleAnswer = (answer) => {
+    console.log('handleAnswer called with:', answer);
+    console.log('Current question context:', quiz.questions[currentQuestion].question_context);
+    
     setAnswers(prev => ({
       ...prev,
       [currentQuestion]: answer
     }));
+    setShowContext(true);
+    setCurrentContext(quiz.questions[currentQuestion].question_context);
+    
+    console.log('After setting context:', {
+      showContext: true,
+      currentContext: quiz.questions[currentQuestion].question_context
+    });
   };
 
   const handleSubmit = async () => {
@@ -120,6 +134,31 @@ export default function TakeQuiz() {
             </button>
           ))}
         </div>
+        {showContext && question.question_context && (
+          <div className={styles.contextContainer}>
+            <h3>Learn More</h3>
+            {console.log('Rendering context:', {
+              showContext,
+              questionContext: question.question_context
+            })}
+            <div 
+              className={styles.contextContent}
+              dangerouslySetInnerHTML={{ __html: question.question_context }}
+            />
+            <button 
+              className={styles.continueButton}
+              onClick={() => {
+                console.log('Continue button clicked');
+                setShowContext(false);
+                if (currentQuestion < quiz.questions.length - 1) {
+                  setCurrentQuestion(prev => prev + 1);
+                }
+              }}
+            >
+              Continue
+            </button>
+          </div>
+        )}
       </div>
 
       <div className={styles.navigation}>
@@ -132,13 +171,17 @@ export default function TakeQuiz() {
           </button>
         )}
         {currentQuestion < quiz.questions.length - 1 ? (
-          <button
-            onClick={() => setCurrentQuestion(prev => prev + 1)}
-            className={styles.navButton}
-            disabled={!answers[currentQuestion]}
-          >
-            Next
-          </button>
+          !showContext ? null : (
+            <button
+              onClick={() => {
+                setCurrentQuestion(prev => prev + 1);
+                setShowContext(false);
+              }}
+              className={styles.navButton}
+            >
+              Next
+            </button>
+          )
         ) : (
           <button
             onClick={handleSubmit}

@@ -96,6 +96,14 @@
   opacity: 0.9;
 }
 
+.deleteButton {
+  background-color: var(--error) !important;
+}
+
+.deleteButton:hover {
+  opacity: 0.9;
+}
+
 @media (max-width: 768px) {
   .dashboard {
     padding: 15px;

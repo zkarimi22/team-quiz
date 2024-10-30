@@ -159,4 +159,39 @@
   .submitButton {
     width: 100%;
   }
+}
+
+.contextContainer {
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.contextContent {
+  margin: 15px 0;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.contextContent img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.continueButton {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.continueButton:hover {
+  background: var(--primary-dark);
 } 

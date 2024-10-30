@@ -33,6 +33,28 @@ export default function Dashboard() {
     }
   };
 
+  const deleteQuiz = async (quizId) => {
+    if (!confirm('Are you sure you want to delete this quiz?')) return;
+    
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`/api/quiz/${quizId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) throw new Error('Failed to delete quiz');
+      
+      // Remove the quiz from the state
+      setQuizzes(quizzes.filter(quiz => quiz._id !== quizId));
+    } catch (error) {
+      console.error('Error deleting quiz:', error);
+      alert('Failed to delete quiz');
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -65,8 +87,11 @@ export default function Dashboard() {
                   <h3>{quiz.title}</h3>
                   <p>{quiz.description}</p>
                   <div className={styles.quizActions}>
-                    <button onClick={() => router.push(`/dashboard/quiz/${quiz._id}`)}>
-                      Manage
+                    <button 
+                      onClick={() => deleteQuiz(quiz._id)}
+                      className={styles.deleteButton}
+                    >
+                      Delete
                     </button>
                     <button onClick={() => router.push(`/dashboard/quiz/${quiz._id}/links`)}>
                       Quiz Links

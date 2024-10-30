@@ -7,6 +7,10 @@ const QuestionSchema = new mongoose.Schema({
   option2: String,
   option3: String,
   correct_option_answer: String,
+  question_context: {
+    type: String,
+    default: ''
+  }
 });
 
 const QuizSchema = new mongoose.Schema({
