@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import styles from './quiz.module.css';
+import ReactMarkdown from 'react-markdown';
 
 export default function TakeQuiz() {
   const params = useParams();
@@ -134,21 +135,18 @@ export default function TakeQuiz() {
             </button>
           ))}
         </div>
-        {showContext && question.question_context && (
-          <div className={styles.contextContainer}>
+      </div>
+
+      {showContext && question.question_context && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modal}>
             <h3>Learn More</h3>
-            {console.log('Rendering context:', {
-              showContext,
-              questionContext: question.question_context
-            })}
-            <div 
-              className={styles.contextContent}
-              dangerouslySetInnerHTML={{ __html: question.question_context }}
-            />
+            <div className={styles.contextContent}>
+              <ReactMarkdown>{question.question_context}</ReactMarkdown>
+            </div>
             <button 
               className={styles.continueButton}
               onClick={() => {
-                console.log('Continue button clicked');
                 setShowContext(false);
                 if (currentQuestion < quiz.questions.length - 1) {
                   setCurrentQuestion(prev => prev + 1);
@@ -158,8 +156,8 @@ export default function TakeQuiz() {
               Continue
             </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className={styles.navigation}>
         {currentQuestion > 0 && (

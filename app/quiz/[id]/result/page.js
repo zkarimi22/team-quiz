@@ -63,9 +63,9 @@ export default function QuizResult() {
 
         <div className={styles.message}>
           {score >= 70 ? (
-            <p className={styles.success}>Congratulations! You passed the quiz!</p>
+            <p className={styles.success}>Congratulations! You passed the review.</p>
           ) : (
-            <p className={styles.failure}>Keep practicing! You can do better next time.</p>
+            <p className={styles.failure}>Keep practicing. It looks like you need some more reviewing on the controls.</p>
           )}
         </div>
       </div>

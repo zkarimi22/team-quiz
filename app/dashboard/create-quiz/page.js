@@ -143,7 +143,7 @@ export default function CreateQuiz() {
               </select>
               <textarea
                 className={styles.htmlEditor}
-                placeholder="Question Context (HTML supported)"
+                placeholder="Question Context (Markdown supported)"
                 value={question.question_context || ''}
                 onChange={(e) => handleQuestionChange(index, 'question_context', e.target.value)}
               />
