@@ -29,7 +29,8 @@ export async function GET(request, { params }) {
       option1: q.option1,
       option2: q.option2,
       option3: q.option3,
-      order_num: q.order_num
+      order_num: q.order_num,
+      question_context: q.question_context
     }));
 
     return NextResponse.json({

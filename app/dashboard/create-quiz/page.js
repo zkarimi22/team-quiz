@@ -11,12 +11,17 @@ export default function CreateQuiz() {
     description: '',
     theme: 'default',
     time_limit: 30,
-    questions: [{ order_num: 1, question: '', option1: '', option2: '', option3: '', correct_option_answer: '' }]
+    questions: [{ order_num: 1, question: '', option1: '', option2: '', option3: '', correct_option_answer: '', question_context: '' }]
   });
 
   const handleQuestionChange = (index, field, value) => {
+    console.log('Updating question:', { index, field, value });
     const updatedQuestions = [...quiz.questions];
-    updatedQuestions[index] = { ...updatedQuestions[index], [field]: value };
+    updatedQuestions[index] = {
+      ...updatedQuestions[index],
+      [field]: value
+    };
+    console.log('Updated question context:', updatedQuestions[index].question_context);
     setQuiz({ ...quiz, questions: updatedQuestions });
   };
 
@@ -29,7 +34,8 @@ export default function CreateQuiz() {
         option1: '',
         option2: '',
         option3: '',
-        correct_option_answer: ''
+        correct_option_answer: '',
+        question_context: ''
       }]
     });
   };
@@ -135,6 +141,12 @@ export default function CreateQuiz() {
                 <option value="option2">Option 2</option>
                 <option value="option3">Option 3</option>
               </select>
+              <textarea
+                className={styles.htmlEditor}
+                placeholder="Question Context (Markdown supported)"
+                value={question.question_context || ''}
+                onChange={(e) => handleQuestionChange(index, 'question_context', e.target.value)}
+              />
             </div>
           ))}
         </div>

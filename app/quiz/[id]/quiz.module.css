@@ -159,4 +159,68 @@
   .submitButton {
     width: 100%;
   }
+}
+
+.contextContainer {
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.contextContent {
+  margin: 15px 0;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.contextContent img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.continueButton {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.continueButton:hover {
+  background: var(--primary-dark);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contextContent {
+  margin: 1rem 0;
 } 
