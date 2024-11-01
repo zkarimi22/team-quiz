@@ -140,7 +140,7 @@ export default function TakeQuiz() {
       {showContext && question.question_context && (
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
-            <h3>Learn More</h3>
+            <h3 className={styles.context_title}>Some Additional Context...</h3>
             <div className={styles.contextContent}>
               <ReactMarkdown>{question.question_context}</ReactMarkdown>
             </div>

@@ -221,6 +221,20 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.context_title {
+color: black;
+text-decoration: underline;
+}
+
 .contextContent {
   margin: 1rem 0;
 } 
+
+.contextContent * {
+  color: black;
+}
+
+.contextContent a {
+  color: var(--primary);
+  font-weight: bold;
+}
